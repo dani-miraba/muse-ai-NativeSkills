@@ -12,6 +12,20 @@ import sys
 DEFAULT_CUSTOM_SKILLS_DIR = Path.home() / "workspace" / "custom-skills"
 SYSTEM_SKILLS_DIR = Path("/opt/muse/skills")
 NAME_RE = re.compile(r"^[a-z][a-z0-9_]{1,62}$")
+FORBIDDEN_TITLE_CHARS = (";", "\u2014", "\u2013", "\u201c", "\u201d", "\u2018", "\u2019")
+
+
+def _validate_single_line(value: str, field_name: str) -> None:
+    if not value.strip():
+        raise ValueError(f"{field_name} must not be empty")
+    if "\n" in value or "\r" in value:
+        raise ValueError(f"{field_name} must be a single line")
+
+
+def _validate_title(title: str) -> None:
+    _validate_single_line(title, "title")
+    if any(char in title for char in FORBIDDEN_TITLE_CHARS):
+        raise ValueError("title contains characters disallowed in SKILL.md prose")
 
 
 def scaffold_skill(
@@ -29,6 +43,9 @@ def scaffold_skill(
         raise ValueError(
             "skill_name must be snake_case (lowercase letters, digits, underscores)"
         )
+    _validate_title(title)
+    _validate_single_line(description, "description")
+    _validate_single_line(category, "category")
 
     if SYSTEM_SKILLS_DIR.is_dir():
         system_names = {
@@ -50,19 +67,23 @@ def scaffold_skill(
         (target_dir / "references").mkdir(exist_ok=True)
 
     skill_yaml = (
-        f'name: "{skill_name}"\n'
-        f'title: "{title}"\n'
-        f'description: "{description}"\n'
-        f'category: "{category}"\n'
+        f"name: {json.dumps(skill_name, ensure_ascii=False)}\n"
+        f"title: {json.dumps(title, ensure_ascii=False)}\n"
+        f"description: {json.dumps(description, ensure_ascii=False)}\n"
+        f"category: {json.dumps(category, ensure_ascii=False)}\n"
         f"include_in_prompt: {'true' if include_in_prompt else 'false'}\n"
     )
     (target_dir / "skill.yaml").write_text(skill_yaml, encoding="utf-8")
 
     skill_md = (
         f"# {title}\n\n"
+        "## Purpose\n\n"
+        "- Deliver the reusable outcome described in `skill.yaml` when the request falls within this skill's boundary.\n\n"
         "## Method\n\n"
-        "- Replace this line with the first actionable step.\n\n"
-        "- Verify outputs with a harmless read or local test before finishing.\n\n"
+        "- Identify the requested outcome, available inputs, authorization boundary, and expected result before taking material action.\n\n"
+        "- Complete the workflow with instructions that explain non-obvious constraints and adapt to the user's actual request.\n\n"
+        "## Validate\n\n"
+        "- Verify outputs with a harmless read or local test before finishing, and state any path that was not executed.\n\n"
         "## Available connectors\n\n"
         "- Use `muse.connector_search` to find other connectors and `muse.skill_search` to find related skills.\n\n"
         "- If nothing here fits, look on the web for a maintained API or MCP server and set it up with "

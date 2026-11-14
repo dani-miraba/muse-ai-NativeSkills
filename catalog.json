@@ -7,7 +7,7 @@
       "version": "1.0.0",
       "path": "skills/skill_creator",
       "category": "Learning and customization",
-      "description": "Scaffold, validate, and test reusable Muse custom skills under ~/workspace/custom-skills/ following Muse formatting, security, and low-RAM rules.",
+      "description": "Design, scaffold, validate, test, and improve reusable Muse custom skills under ~/workspace/custom-skills/ following Muse formatting, security, and low-RAM rules.",
       "amends": null,
       "sync_script": "scripts/sync_skill_creator.py",
       "target_dir": "~/workspace/custom-skills/skill_creator",
