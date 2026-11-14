@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "skills": [
+    {
+      "name": "skill_creator",
+      "title": "Skill Creator",
+      "version": "1.0.0",
+      "path": "skills/skill_creator",
+      "category": "Learning and customization",
+      "description": "Scaffold, validate, and test reusable Muse custom skills under ~/workspace/custom-skills/ following Muse formatting, security, and low-RAM rules.",
+      "amends": null,
+      "sync_script": "scripts/sync_skill_creator.py",
+      "target_dir": "~/workspace/custom-skills/skill_creator",
+      "file_count": 6
+    },
+    {
+      "name": "spreadsheet_analyst",
+      "title": "Spreadsheet and Tabular Analyst",
+      "version": "1.0.0",
+      "path": "skills/spreadsheet_analyst",
+      "category": "Work and knowledge",
+      "description": "Inspect, ingest, profile, query, and export Excel, CSV, and JSON/NDJSON files using low-RAM streaming and disk-backed SQLite.",
+      "amends": null,
+      "sync_script": "scripts/sync_skill.py",
+      "target_dir": "~/workspace/custom-skills/spreadsheet_analyst",
+      "file_count": 4
+    },
+    {
+      "name": "custom_connector_pro",
+      "title": "Custom Connector Pro",
+      "version": "1.0.0",
+      "path": "skills/custom_connector_pro",
+      "category": "Learning and customization",
+      "description": "Build resilient REST and MCP custom connectors using shared retry, pagination, dry-run, and spill-to-file helpers plus optional API blueprints.",
+      "amends": "custom_connector_setup",
+      "sync_script": "scripts/sync_vitamina.py",
+      "target_dir": "~/workspace/custom-skills/custom_connector_pro",
+      "file_count": 6
+    }
+  ]
+}

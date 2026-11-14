@@ -1,0 +1,5 @@
+name: "skill_creator"
+title: "Skill Creator"
+description: "Scaffold, validate, and test reusable Muse custom skills under ~/workspace/custom-skills/ following Muse formatting, security, and low-RAM rules."
+category: "Learning and customization"
+include_in_prompt: true

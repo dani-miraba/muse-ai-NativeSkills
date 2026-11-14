@@ -1,0 +1,5 @@
+name: "spreadsheet_analyst"
+title: "Spreadsheet and Tabular Analyst"
+description: "Inspect, ingest, profile, query, and export Excel, CSV, and JSON/NDJSON files using low-RAM streaming and disk-backed SQLite."
+category: "Work and knowledge"
+include_in_prompt: true

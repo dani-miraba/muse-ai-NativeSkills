@@ -1,0 +1,8 @@
+name: "custom_connector_pro"
+title: "Custom Connector Pro"
+description: "Build resilient REST and MCP custom connectors using shared retry, pagination, dry-run, and spill-to-file helpers plus optional API blueprints."
+category: "Learning and customization"
+include_in_prompt: true
+amends:
+  skill: custom_connector_setup
+  reviewed_revision: "PENDING_LOCAL_SHA256"

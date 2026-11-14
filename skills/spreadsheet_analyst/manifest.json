@@ -1,0 +1,27 @@
+{
+  "name": "spreadsheet_analyst",
+  "version": "1.0.0",
+  "target_skill_dir": "~/workspace/custom-skills/spreadsheet_analyst",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "9f603369e8918f0a404033b476408d91b8e82cd68b8b3cdc087f6b91d9b6cad4",
+      "bytes": 2700
+    },
+    {
+      "path": "skill.yaml",
+      "sha256": "5e915b6a94c1f2b2b77791c7a018f4756ea235d4af42a75cae59bc3264a7c11c",
+      "bytes": 265
+    },
+    {
+      "path": "scripts/tabular_cli.py",
+      "sha256": "50c3ef46766f2b03fcd35186a7d765bb6e03650910a54f2e5e72cbf02ede7a0a",
+      "bytes": 34195
+    },
+    {
+      "path": "scripts/sync_skill.py",
+      "sha256": "08386b97b9b91a79ee8220239ccd998924521a0c2aaf92fb26fefc0fff91cf67",
+      "bytes": 2829
+    }
+  ]
+}
