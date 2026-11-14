@@ -9,9 +9,9 @@
       "bytes": 2700
     },
     {
-      "path": "skill.yaml",
-      "sha256": "5e915b6a94c1f2b2b77791c7a018f4756ea235d4af42a75cae59bc3264a7c11c",
-      "bytes": 265
+      "path": "scripts/sync_skill.py",
+      "sha256": "08386b97b9b91a79ee8220239ccd998924521a0c2aaf92fb26fefc0fff91cf67",
+      "bytes": 2829
     },
     {
       "path": "scripts/tabular_cli.py",
@@ -19,9 +19,9 @@
       "bytes": 34195
     },
     {
-      "path": "scripts/sync_skill.py",
-      "sha256": "08386b97b9b91a79ee8220239ccd998924521a0c2aaf92fb26fefc0fff91cf67",
-      "bytes": 2829
+      "path": "skill.yaml",
+      "sha256": "5e915b6a94c1f2b2b77791c7a018f4756ea235d4af42a75cae59bc3264a7c11c",
+      "bytes": 265
     }
   ]
 }

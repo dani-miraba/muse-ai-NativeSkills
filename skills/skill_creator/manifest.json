@@ -9,9 +9,9 @@
       "bytes": 4478
     },
     {
-      "path": "skill.yaml",
-      "sha256": "8778f071e44bb758068b6aadd33c4d3d942fa094971a4c119ecdd38fe866ccf1",
-      "bytes": 286
+      "path": "references/design-and-evaluation.md",
+      "sha256": "2ed581dc1176e20446bf0f98d865db50e09f4b4230f96e6dcecc842c6faeed86",
+      "bytes": 3548
     },
     {
       "path": "references/muse-constraints.md",
@@ -25,13 +25,18 @@
     },
     {
       "path": "scripts/quick_validate.py",
-      "sha256": "0c7a94ad54ca65e906933375ec9b7ea05f450cd2f5431a8d72fb46590cb0309e",
-      "bytes": 8702
+      "sha256": "bc980231303c025d06dd4645f54f3ceb5f1def0767e88ae841b6e0886cf5c19c",
+      "bytes": 8978
     },
     {
       "path": "scripts/sync_skill_creator.py",
       "sha256": "d91272e08bae127ed38029bb1486d20ffffcf713d0082835d00b770d4a5a57a1",
       "bytes": 2825
+    },
+    {
+      "path": "skill.yaml",
+      "sha256": "8778f071e44bb758068b6aadd33c4d3d942fa094971a4c119ecdd38fe866ccf1",
+      "bytes": 286
     }
   ]
 }

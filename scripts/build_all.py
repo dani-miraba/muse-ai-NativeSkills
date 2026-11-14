@@ -10,6 +10,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
+PACKAGE_EXCLUDED_NAMES = {"INSTALL.md", "manifest.json"}
 
 SKILL_SPECS: list[dict[str, Any]] = [
     {
@@ -18,14 +19,6 @@ SKILL_SPECS: list[dict[str, Any]] = [
         "version": "1.0.0",
         "sync_script": "scripts/sync_skill_creator.py",
         "amends": None,
-        "files": [
-            "SKILL.md",
-            "skill.yaml",
-            "references/muse-constraints.md",
-            "scripts/init_skill.py",
-            "scripts/quick_validate.py",
-            "scripts/sync_skill_creator.py",
-        ],
     },
     {
         "dir": "spreadsheet_analyst",
@@ -33,12 +26,6 @@ SKILL_SPECS: list[dict[str, Any]] = [
         "version": "1.0.0",
         "sync_script": "scripts/sync_skill.py",
         "amends": None,
-        "files": [
-            "SKILL.md",
-            "skill.yaml",
-            "scripts/tabular_cli.py",
-            "scripts/sync_skill.py",
-        ],
     },
     {
         "dir": "custom_connector_pro",
@@ -46,16 +33,25 @@ SKILL_SPECS: list[dict[str, Any]] = [
         "version": "1.0.0",
         "sync_script": "scripts/sync_vitamina.py",
         "amends": "custom_connector_setup",
-        "files": [
-            "SKILL.md",
-            "skill.yaml",
-            "scripts/robust_rest.py",
-            "scripts/robust_mcp.py",
-            "scripts/sync_vitamina.py",
-            "blueprints/README.md",
-        ],
     },
 ]
+
+
+def distributable_files(skill_dir: Path) -> list[str]:
+    """Return every skill artifact that the installer must receive."""
+    files: list[str] = []
+    for file_path in skill_dir.rglob("*"):
+        if not file_path.is_file():
+            continue
+        rel_path = file_path.relative_to(skill_dir)
+        if (
+            file_path.name in PACKAGE_EXCLUDED_NAMES
+            or "__pycache__" in rel_path.parts
+            or file_path.suffix == ".pyc"
+        ):
+            continue
+        files.append(rel_path.as_posix())
+    return sorted(files)
 
 
 def parse_skill_yaml(path: Path) -> dict[str, str]:
@@ -76,7 +72,7 @@ def parse_skill_yaml(path: Path) -> dict[str, str]:
 def build_skill_manifest(spec: dict[str, Any]) -> dict[str, Any]:
     skill_dir = SKILLS_DIR / spec["dir"]
     entries: list[dict[str, Any]] = []
-    for rel in spec["files"]:
+    for rel in distributable_files(skill_dir):
         file_path = skill_dir / rel
         if not file_path.is_file():
             raise FileNotFoundError(f"Missing tracked file: {file_path}")

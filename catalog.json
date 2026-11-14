@@ -11,7 +11,7 @@
       "amends": null,
       "sync_script": "scripts/sync_skill_creator.py",
       "target_dir": "~/workspace/custom-skills/skill_creator",
-      "file_count": 6
+      "file_count": 7
     },
     {
       "name": "spreadsheet_analyst",

@@ -73,7 +73,7 @@ def parse_simple_yaml(text: str) -> dict[str, Any]:
 
 
 def _validate_metadata(
-    yaml_path: Path, folder_name: str, errors: list[str]
+    yaml_path: Path, folder_name: str, errors: list[str], warnings: list[str]
 ) -> dict[str, Any]:
     meta = parse_simple_yaml(yaml_path.read_text(encoding="utf-8"))
     for req in ("name", "title", "description", "category", "include_in_prompt"):
@@ -103,8 +103,14 @@ def _validate_metadata(
             "reviewed_revision",
         }:
             errors.append("amends block must contain exactly 'skill' and 'reviewed_revision'")
-        elif not SHA256_RE.match(str(amends["reviewed_revision"])):
-            errors.append("amends reviewed_revision must be a 64-character SHA-256")
+        else:
+            revision = str(amends["reviewed_revision"])
+            if revision == "PENDING_LOCAL_SHA256":
+                warnings.append(
+                    "amends reviewed_revision will be replaced by the installer on Muse"
+                )
+            elif not SHA256_RE.match(revision):
+                errors.append("amends reviewed_revision must be a 64-character SHA-256")
 
     return meta
 
@@ -203,7 +209,7 @@ def validate_skill(skill_dir: Path) -> dict[str, Any]:
     if errors:
         return {"ok": False, "errors": errors, "warnings": warnings}
 
-    meta = _validate_metadata(yaml_path, skill_dir.name, errors)
+    meta = _validate_metadata(yaml_path, skill_dir.name, errors, warnings)
     _validate_markdown(md_path, skill_dir, str(meta.get("title", "")), errors, warnings)
     _scan_skill_files(skill_dir, errors)
 

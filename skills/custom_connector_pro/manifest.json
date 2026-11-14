@@ -9,14 +9,9 @@
       "bytes": 2402
     },
     {
-      "path": "skill.yaml",
-      "sha256": "b35adb596723d8f55db1dddfa85795160ef4c7083025d8f3f0fcb6dbee0a3aed",
-      "bytes": 365
-    },
-    {
-      "path": "scripts/robust_rest.py",
-      "sha256": "007051513836135d8f8b469b4bc2411c7ef8c6e7c4324a91e5a80b04b0ebcb33",
-      "bytes": 15380
+      "path": "blueprints/README.md",
+      "sha256": "0323f8e64082fe0d87b70cb62640e278ca2f653ad77ef41c953f9a8d1bd3436e",
+      "bytes": 303
     },
     {
       "path": "scripts/robust_mcp.py",
@@ -24,14 +19,19 @@
       "bytes": 11204
     },
     {
+      "path": "scripts/robust_rest.py",
+      "sha256": "007051513836135d8f8b469b4bc2411c7ef8c6e7c4324a91e5a80b04b0ebcb33",
+      "bytes": 15380
+    },
+    {
       "path": "scripts/sync_vitamina.py",
       "sha256": "06ac1e1f5ea6cf5f03d41ca752aa035d5cf3d99c0ef836f13b916a17d42fecaa",
       "bytes": 5531
     },
     {
-      "path": "blueprints/README.md",
-      "sha256": "0323f8e64082fe0d87b70cb62640e278ca2f653ad77ef41c953f9a8d1bd3436e",
-      "bytes": 303
+      "path": "skill.yaml",
+      "sha256": "b35adb596723d8f55db1dddfa85795160ef4c7083025d8f3f0fcb6dbee0a3aed",
+      "bytes": 365
     }
   ]
 }
